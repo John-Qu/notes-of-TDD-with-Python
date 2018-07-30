@@ -1,5 +1,13 @@
 # Prerequisites
 
+---
+layout: post
+title:  "notes of TDD with Python - Prerequisites"
+date: 2018-07-27 18:29:53 +0800
+categories: notes
+description: This is a note reading Test-Driven Development with Python, 2nd edition, by Harry J.W. Percival (O’Reilly). Copyright 2017 Harry Percival, 978-1-491-95870-4. 
+---
+
 
 ## How HTML Works
 
@@ -58,6 +66,25 @@ The point is "extra possibility" about bugs.
 > Sometimes, a basic text editor and a command line are all you have —​when you’re working on a server, for example—​so it’s always worth learning how to use the basic tools first and understanding how they work.
 
 I don't need to work on the server? Yes. So let me use my PyCharm.
+
+
+## Why not Anaconda?
+
+### What Anaconda is good at?
+
+> It’s particularly popular on Windows and for scientific computing, where it can be hard to get some of the compiled libraries to install.
+
+### Why not use it in web programming?
+
+In the world of web programming it’s much less necessary, so I recommend you do not use Anaconda for this book.
+
+### Why not use it in this tutorial?
+
+Apart from anything else I don’t know enough about it to help you debug any problems with it if they occur!
+
+---
+2018-07-27 18:28:35
+
 
 
 
