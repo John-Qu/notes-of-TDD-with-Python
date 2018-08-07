@@ -118,7 +118,6 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotIn("Buy peacock features", page_text)
         self.assertIn("Buy milk", page_text)
 
-        self.fail('Finish the test!')
 
 # if __name__ == '__main__':
 #     unittest.main(warnings='ignore')

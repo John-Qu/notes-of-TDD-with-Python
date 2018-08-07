@@ -1,11 +1,13 @@
 # Preface
 
 ---
+
 layout: post
 title:  "notes of TDD with Python - Preface"
 date: 2018-07-27 16:00:09 +0800
 categories: notes
 description: This is a note reading Test-Driven Development with Python, 2nd edition, by Harry J.W. Percival (O’Reilly). Copyright 2017 Harry Percival, 978-1-491-95870-4. 
+
 ---
 
 ## What is the main theme of this book?
