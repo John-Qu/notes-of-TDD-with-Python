@@ -2,14 +2,14 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 # import unittest # replace python's unittest module with django's test module
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
 
 
 MAX_WAIT = 10
 
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -120,13 +120,13 @@ class NewVisitorTest(LiveServerTestCase):
     def test_layout_and_styling(self):
         # Edith goes to the home page
         self.browser.get(self.live_server_url)
-        self.browser.set_window_size(1024, 768)
+        self.browser.set_window_size(512, 768)
 
         # She notices the input box is nicely centered.
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width']/2,
-            512,
+            256,
             delta=10
         )
         # She starts a new list and sees the input is nicely
@@ -137,6 +137,6 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
-            512,
+            256,
             delta=10
         )
