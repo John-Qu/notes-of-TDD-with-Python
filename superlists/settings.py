@@ -25,7 +25,8 @@ SECRET_KEY = 's0lcdj#l7q70o-l@+(a&pem0v1asnxehh#4^v31zwvt*jzipl-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['superlists-staging.grapegraph.com', 'localhost', '127.0.0.1', '0.0.0.0']
+# ALLOWED_HOSTS = ['superlists-staging.grapegraph.com', 'localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
