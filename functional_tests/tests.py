@@ -6,6 +6,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
 import os
 
+# sudo /etc/init.d/nginx start
 
 MAX_WAIT = 10
 
