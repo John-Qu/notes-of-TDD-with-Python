@@ -44,12 +44,19 @@ Assume we have a user account at /home/username
          ├── etc
 
 export SITENAME=superlists-staging.grapegraph.com DJANGO_DEBUG_FALSE=y DJANGO_SECRET_KEY=secret_key
+
 echo $SITENAME
-../virtualenv/bin/gunicorn --bind unix:/tmp/superlists-staging.grapegraph.com.socket  superlists.wsgi:application
-../virtualenv/bin/gunicorn --bind unix:/tmp/$SITENAME.socket  superlists.wsgi:application
+
+./virtualenv/bin/gunicorn --bind unix:/tmp/superlists-staging.grapegraph.com.socket  superlists.wsgi:application
+
+./virtualenv/bin/gunicorn --bind unix:/tmp/$SITENAME.socket  superlists.wsgi:application
+
 sudo systemctl daemon-reload
+
 sudo systemctl enable gunicorn-superlists-staging.grapegraph.com
+
 sudo systemctl start gunicorn-superlists-staging.grapegraph.com
+
 sudo systemctl status gunicorn-superlists-staging.grapegraph.com
 
 cat ./deploy_tools/nginx.template.conf \
@@ -63,4 +70,6 @@ cat ./deploy_tools/gunicorn-systemd.template.service \
     | sed "s/DOMAIN/superlists-staging.grapegraph.com/g" \
     | sudo tee /etc/systemd/system/gunicorn-superlists-staging.grapegraph.com.service
 
+export DJANGO_DEBUG_FALSE=y SITENAME=superlists-staging.grapegraph.com DJANGO_SECRET_KEY=not_so_secret
 
+echo $DJANGO_SECRET_KEY
