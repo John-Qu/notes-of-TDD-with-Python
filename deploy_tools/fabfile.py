@@ -47,5 +47,4 @@ def _update_static_files():
 
 
 def _update_database():
-    run('mkdir ..')
     run('./virtualenv/bin/python manage.py migrate --noinput')
