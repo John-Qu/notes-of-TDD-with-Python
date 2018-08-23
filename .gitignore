@@ -7,3 +7,4 @@ __pycache__
 *.xml
 /static
 .env
+gunicorn-superlists-staging.grapegraph.com.service
