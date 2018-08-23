@@ -7,6 +7,9 @@ from selenium.common.exceptions import WebDriverException
 import os
 
 # sudo /etc/init.d/nginx start
+# export SITENAME=superlists-staging.grapegraph.com DJANGO_DEBUG_FALSE=y DJANGO_SECRET_KEY=secret_key
+# echo $SITENAME
+
 
 MAX_WAIT = 10
 
