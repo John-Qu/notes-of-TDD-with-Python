@@ -33,8 +33,7 @@ Assume we have a user account at /home/username
     ├── DOMAIN1
     │    ├── .env
     │    ├── db.sqlite3
-    │    ├── source
-    |    │    ├── manage.py etc
+    │    ├── manage.py etc
     │    ├── static
     │    └── virtualenv
     |         ├── bin etc
