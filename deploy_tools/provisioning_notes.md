@@ -73,3 +73,7 @@ cat ./deploy_tools/gunicorn-systemd.template.service \
 export DJANGO_DEBUG_FALSE=y SITENAME=superlists-staging.grapegraph.com DJANGO_SECRET_KEY=not_so_secret
 
 echo $DJANGO_SECRET_KEY
+
+---
+
+fab deploy:host=johnqu@superlists-staging.grapegraph.com
