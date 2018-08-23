@@ -42,3 +42,25 @@ Assume we have a user account at /home/username
          ├── .env
          ├── db.sqlite3
          ├── etc
+
+export SITENAME=superlists-staging.grapegraph.com DJANGO_DEBUG_FALSE=y DJANGO_SECRET_KEY=secret_key
+echo $SITENAME
+../virtualenv/bin/gunicorn --bind unix:/tmp/superlists-staging.grapegraph.com.socket  superlists.wsgi:application
+../virtualenv/bin/gunicorn --bind unix:/tmp/$SITENAME.socket  superlists.wsgi:application
+sudo systemctl daemon-reload
+sudo systemctl enable gunicorn-superlists-staging.grapegraph.com
+sudo systemctl start gunicorn-superlists-staging.grapegraph.com
+sudo systemctl status gunicorn-superlists-staging.grapegraph.com
+
+cat ./deploy_tools/nginx.template.conf \
+    | sed "s/DOMAIN/superlists-staging.grapegraph.com/g" \
+    | sudo tee /etc/nginx/sites-available/superlists-staging.grapegraph.com
+
+sudo ln -s /etc/nginx/sites-available/superlists-staging.grapegraph.com \
+    /etc/nginx/sites-enabled/superlists-staging.grapegraph.com
+
+cat ./deploy_tools/gunicorn-systemd.template.service \
+    | sed "s/DOMAIN/superlists-staging.grapegraph.com/g" \
+    | sudo tee /etc/systemd/system/gunicorn-superlists-staging.grapegraph.com.service
+
+

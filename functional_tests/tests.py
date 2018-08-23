@@ -6,15 +6,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
 import os
 
-# sudo /etc/init.d/nginx start
-# export SITENAME=superlists-staging.grapegraph.com DJANGO_DEBUG_FALSE=y DJANGO_SECRET_KEY=secret_key
-# echo $SITENAME
-# ../virtualenv/bin/gunicorn --bind unix:/tmp/superlists-staging.grapegraph.com.socket  superlists.wsgi:application
-# ../virtualenv/bin/gunicorn --bind unix:/tmp/$SITENAME.socket  superlists.wsgi:application
-# sudo systemctl daemon-reload
-# sudo systemctl enable gunicorn-superlists-staging.grapegraph.com
-# sudo systemctl start gunicorn-superlists-staging.grapegraph.com
-# sudo systemctl status gunicorn-superlists-staging.grapegraph.com
+
 
 
 MAX_WAIT = 10
