@@ -42,6 +42,10 @@ Assume we have a user account at /home/username
          ├── .env
          ├── db.sqlite3
          ├── etc
+---
+# For stating site
+
+fab deploy:host=johnqu@superlists-staging.grapegraph.com
 
 export SITENAME=superlists-staging.grapegraph.com DJANGO_DEBUG_FALSE=y DJANGO_SECRET_KEY=secret_key
 
@@ -76,4 +80,49 @@ echo $DJANGO_SECRET_KEY
 
 ---
 
-fab deploy:host=johnqu@superlists-staging.grapegraph.com
+## For Production
+
+DNS the domain name on server control panel.
+
+### On local term:
+
+fab deploy:host=johnqu@superlists.grapegraph.com
+
+### On server term
+
+cd ~/sites/superlists.grapegraph.com/
+
+cat ./deploy_tools/nginx.template.conf \
+    | sed "s/DOMAIN/superlists.grapegraph.com/g" \
+    | sudo tee /etc/nginx/sites-available/superlists.grapegraph.com
+
+sudo ln -s /etc/nginx/sites-available/superlists.grapegraph.com \
+    /etc/nginx/sites-enabled/superlists.grapegraph.com
+
+cat ./deploy_tools/gunicorn-systemd.template.service \
+    | sed "s/DOMAIN/superlists.grapegraph.com/g" \
+    | sudo tee /etc/systemd/system/gunicorn-superlists.grapegraph.com.service
+
+sudo systemctl daemon-reload
+
+sudo /etc/init.d/nginx reload
+
+sudo systemctl enable gunicorn-superlists.grapegraph.com
+
+sudo systemctl start gunicorn-superlists.grapegraph.com
+
+### On local term
+
+STAGING_SERVER=superlists.grapegraph.com python manage.py test functional_tests
+
+### For checking status
+
+sudo systemctl status gunicorn-superlists.grapegraph.com
+
+./virtualenv/bin/gunicorn --bind unix:/tmp/superlists.grapegraph.com.socket  superlists.wsgi:application
+
+sudo vi /etc/nginx/sites-available/superlists.grapegraph.com
+
+sudo vi /etc/systemd/system/gunicorn-superlists.grapegraph.com.service
+
+---
